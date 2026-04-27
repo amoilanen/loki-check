@@ -1,5 +1,12 @@
-- Add features to be feature complete: inspiration ScalaScheck 1.15.1
-- Get rid of the [..Arr()] repetition
-- Convenience method to avoid calling generate().get() all the time
+All previously listed items are resolved by the 2026 modernization pass:
 
-- Write a script to generate documentation from the source code, and push it to the github.io branch automatically as part of the build process (Travis?)
+- [done] Feature parity with ScalaCheck-style combinators (boolean, numeric,
+  string, array/list, set, map, tuple, record, object, date, option,
+  suchThat, sized/resize, pick, shuffle) plus `forAll` / `exists`
+  quantifiers with shrinking.
+- [done] `[...Array(n)]` repetition replaced with the `range` / `repeatGenerator`
+  helpers in `src/internal/range.ts`.
+- [done] Convenience `sample()` / `sampleN()` on `Generator` removes the need
+  to call `generate().get()`.
+- [done] Documentation generated from source (TypeDoc + VitePress) and
+  deployed to GitHub Pages via `.github/workflows/docs.yml`.

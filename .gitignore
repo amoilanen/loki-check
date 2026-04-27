@@ -1,4 +1,8 @@
-dist
+dist/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+docs/api/
+coverage/
 
 # Logs
 logs
