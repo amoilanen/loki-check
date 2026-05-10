@@ -1,11 +1,19 @@
-# gen.js
+# loki-check
 
-Composable, seeded data generators and property-based testing for TypeScript / JavaScript, inspired by ScalaCheck.
+<p align="center">
+  <img src="./assets/logo.jpg" alt="loki-check — raven mascot, in the spirit of the Norse sagas" width="320" />
+</p>
+<center>× ᛚᚢᚴᛁ ᚠᚱᚢᚦᚢᚾ ×</center>
+<br/>
+
+> _"Loki, the shape-shifter of the sagas, slips between forms to test everybody."_
+
+Composable, seeded data generators and property-based testing for TypeScript / JavaScript, in the spirit of ScalaCheck - and named for the Norse trickster of the Eddas. Like Loki of the sagas, the library shape-shifts your inputs, slipping unexpected values past your assumptions until your invariants hold under every guise.
 
 ## Hello world
 
 ```ts
-import { Generators } from 'gen.js';
+import { Generators } from 'loki-check';
 
 const point = Generators.record({ x: Generators.integer(), y: Generators.integer() });
 console.log(point.sample({ seed: 42 }));
@@ -13,7 +21,7 @@ console.log(point.sample({ seed: 42 }));
 
 ## Documentation
 
-Full guide and API reference: <https://antivanov.github.io/gen.js/>
+Full guide and API reference: <https://amoilanen.github.io/loki-check/>
 
 ## Examples
 

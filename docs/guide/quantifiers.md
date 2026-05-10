@@ -1,6 +1,6 @@
 # Property-based testing with `forAll` and `exists`
 
-`gen.js` ships two quantifier-style entry points designed to plug into any test
+`loki-check` ships two quantifier-style entry points designed to plug into any test
 runner (Vitest, Mocha, Jest — all of them).
 
 ## `forAll`
@@ -10,7 +10,7 @@ Returns a structured result; on failure it shrinks toward the simplest
 counter-example.
 
 ```ts
-import { forAll, Generators } from 'gen.js';
+import { forAll, Generators } from 'loki-check';
 
 const r = forAll(Generators.integer({ min: -1000, max: 1000 }), n => n * 0 === 0);
 
@@ -37,7 +37,7 @@ Throws on failure. Use it directly inside a test runner's `it(...)` block:
 
 ```ts
 import { describe, it } from 'vitest';
-import { forAll, Generators } from 'gen.js';
+import { forAll, Generators } from 'loki-check';
 
 describe('Math', () => {
   it('addition is commutative', () => {
@@ -81,7 +81,7 @@ The dual of `forAll` — returns the first witness satisfying the predicate, or
 reports failure after exhausting the try budget.
 
 ```ts
-import { exists, Generators } from 'gen.js';
+import { exists, Generators } from 'loki-check';
 
 const r = exists(Generators.integer({ min: 0, max: 1000 }), n => n > 950);
 

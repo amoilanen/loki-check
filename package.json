@@ -1,5 +1,5 @@
 {
-  "name": "gen.js",
+  "name": "loki-check",
   "version": "0.1.0",
   "description": "Data generator library for TypeScript/JavaScript",
   "type": "module",
@@ -34,14 +34,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/antivanov/gen.js.git"
+    "url": "git+ssh://git@github.com/amoilanen/loki-check.git"
   },
   "author": "anton.al.ivanov@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/antivanov/gen.js/issues"
+    "url": "https://github.com/amoilanen/loki-check/issues"
   },
-  "homepage": "https://github.com/antivanov/gen.js#readme",
+  "homepage": "https://github.com/amoilanen/loki-check#readme",
   "devDependencies": {
     "@types/node": "^22.10.0",
     "eslint": "^9.17.0",

@@ -4,7 +4,7 @@ A grouped tour of the built-in combinators. Every symbol below is exported on
 the `Generators` namespace:
 
 ```ts
-import { Generators } from 'gen.js';
+import { Generators } from 'loki-check';
 ```
 
 For full type signatures see the [API reference](/api/).

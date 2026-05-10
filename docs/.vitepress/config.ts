@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'gen.js',
+  title: 'loki-check',
   description: 'Composable, seeded data generators for TypeScript / JavaScript',
-  base: '/gen.js/',
+  base: '/loki-check/',
   cleanUrls: true,
   lastUpdated: true,
   ignoreDeadLinks: true,
@@ -12,7 +12,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Examples', link: '/examples/' },
       { text: 'API', link: '/api/' },
-      { text: 'GitHub', link: 'https://github.com/antivanov/gen.js' },
+      { text: 'GitHub', link: 'https://github.com/amoilanen/loki-check' },
     ],
     sidebar: {
       '/guide/': [
@@ -43,11 +43,11 @@ export default defineConfig({
       ],
       '/api/': [{ text: 'API Reference', link: '/api/' }],
     },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/antivanov/gen.js' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/amoilanen/loki-check' }],
     search: { provider: 'local' },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2020-present gen.js contributors',
+      copyright: 'Copyright © 2020-present loki-check contributors',
     },
   },
 });

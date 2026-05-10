@@ -1,6 +1,6 @@
 # Examples
 
-Each example below is a runnable file in the [`examples/`](https://github.com/antivanov/gen.js/tree/master/examples)
+Each example below is a runnable file in the [`examples/`](https://github.com/amoilanen/loki-check/tree/master/examples)
 directory of the repo. They run as part of the test suite via
 `npm run test:examples`, so you can be confident any snippet you copy here will
 actually execute end-to-end.

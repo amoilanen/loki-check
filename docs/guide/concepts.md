@@ -6,7 +6,7 @@ A `Generator<T>` describes **how** to produce values of type `T`. It does not
 hold any values until you ask for one.
 
 ```ts
-import { Generators, type Generator } from 'gen.js';
+import { Generators, type Generator } from 'loki-check';
 
 const g: Generator<number> = Generators.integer({ min: 0, max: 9 });
 
@@ -26,7 +26,7 @@ into an exception, while the lower-level `g.generate(rng)` lets you handle the
 The two primary combinators on every generator:
 
 ```ts
-import { Generators } from 'gen.js';
+import { Generators } from 'loki-check';
 
 // map : (T -> U) -> Generator<U>
 const evenInts = Generators.integer({ min: 0, max: 100 }).map(n => n * 2);
@@ -92,7 +92,7 @@ Some combinators (notably `arrayOf` without an explicit length) draw from a
 `Generators.resize(n, gen)` to fix it for a sub-generator.
 
 ```ts
-import { Generators } from 'gen.js';
+import { Generators } from 'loki-check';
 
 const tinyArrays = Generators.resize(5, Generators.arrayOf(Generators.integer()));
 ```

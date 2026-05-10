@@ -50,7 +50,7 @@ export function sequenceOfValues<T>(...values: Array<T>): Generator<T> {
  *
  * @example
  * ```ts
- * import { Generators } from 'gen.js';
+ * import { Generators } from 'loki-check';
  *
  * const colour = Generators.oneOf(
  *   Generators.pure('red'),
@@ -128,7 +128,7 @@ function randomIndexWithProbabilityDistribution(probabilities: Array<number>, ra
  *
  * @example
  * ```ts
- * import { Generators } from 'gen.js';
+ * import { Generators } from 'loki-check';
  *
  * // 80% positive integers, 20% negative.
  * const skewed = Generators.frequency(
@@ -165,7 +165,7 @@ export function frequency<T>(...generatorFrequences: Array<[number, Generator<T>
  *
  * @example
  * ```ts
- * import { Generators } from 'gen.js';
+ * import { Generators } from 'loki-check';
  *
  * type Tree = { value: number; children: Tree[] };
  * const tree = Generators.recursive<Tree>(self =>

@@ -1,5 +1,5 @@
 /**
- * gen.js — composable, seeded data generators for TypeScript/JavaScript.
+ * loki-check — composable, seeded data generators for TypeScript/JavaScript.
  *
  * The public surface is intentionally narrow:
  *
@@ -15,7 +15,7 @@
  *
  * @example
  * ```ts
- * import { Generators, forAll } from 'gen.js';
+ * import { Generators, forAll } from 'loki-check';
  *
  * const xs = Generators.arrayOf(Generators.integer(), 5).sample({ seed: 1 });
  * forAll.assert(Generators.integer(), n => Number.isInteger(n));

@@ -53,7 +53,7 @@ export function arrayOfLength<T>(generator: Generator<T>, length: number): Gener
  *
  * @example
  * ```ts
- * import { Generators } from 'gen.js';
+ * import { Generators } from 'loki-check';
  *
  * const xs = Generators.arrayOf(Generators.integer({ min: 0, max: 9 }), 5)
  *   .sample({ seed: 1 });

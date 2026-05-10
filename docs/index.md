@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: gen.js
+  name: loki-check
   text: Composable, seeded data generators
   tagline: ScalaCheck-inspired generators and property-based testing for TypeScript / JavaScript.
   actions:
@@ -14,7 +14,7 @@ hero:
       link: /api/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/antivanov/gen.js
+      link: https://github.com/amoilanen/loki-check
 
 features:
   - title: Composable combinators
@@ -28,7 +28,7 @@ features:
 ## Five-line hello world
 
 ```ts
-import { Generators } from 'gen.js';
+import { Generators } from 'loki-check';
 
 const point = Generators.record({ x: Generators.integer(), y: Generators.integer() });
 console.log(point.sample({ seed: 42 }));

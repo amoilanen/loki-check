@@ -11,7 +11,7 @@ import { type Random, defaultRandom, withSize } from '../random/index.js';
  *
  * @example
  * ```ts
- * import { Generators } from 'gen.js';
+ * import { Generators } from 'loki-check';
  *
  * // Generates an array whose length matches the active size.
  * const arr = Generators.sized(s =>
@@ -36,7 +36,7 @@ export function sized<T>(build: (size: number) => Generator<T>): Generator<T> {
  *
  * @example
  * ```ts
- * import { Generators } from 'gen.js';
+ * import { Generators } from 'loki-check';
  *
  * const fiveInts = Generators.resize(
  *   5,

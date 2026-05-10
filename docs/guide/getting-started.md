@@ -1,6 +1,6 @@
 # Getting Started
 
-`gen.js` is a small (~ a few KB minzipped) library for building **composable,
+`loki-check` is a small (~ a few KB minzipped) library for building **composable,
 seeded data generators** — and using them to drive property-based tests.
 
 It is heavily inspired by [ScalaCheck](https://github.com/typelevel/scalacheck),
@@ -9,16 +9,16 @@ re-imagined around the TypeScript / 2026-era Node.js toolchain.
 ## Install
 
 ```sh
-npm install --save-dev gen.js
+npm install --save-dev loki-check
 ```
 
-`gen.js` ships dual ESM (`.mjs`) + CJS (`.cjs`) bundles plus first-class type
+`loki-check` ships dual ESM (`.mjs`) + CJS (`.cjs`) bundles plus first-class type
 declarations and works on Node.js 22 LTS or newer.
 
 ## Your first generator
 
 ```ts
-import { Generators } from 'gen.js';
+import { Generators } from 'loki-check';
 
 const integerInRange = Generators.integer({ min: 0, max: 100 });
 
@@ -52,7 +52,7 @@ Every entry point that produces randomness — `sample`, `sampleN`, `forAll`,
 forever. This is the cornerstone of debuggable property-based testing:
 
 ```ts
-import { forAll, Generators } from 'gen.js';
+import { forAll, Generators } from 'loki-check';
 
 const r = forAll(Generators.integer(), n => n < 100);
 if (!r.ok) console.log('reproduce with seed:', r.seed);
