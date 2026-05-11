@@ -19,5 +19,5 @@ npx tsx examples/uuid.ts
 
 ## When NOT to use it
 
-- Production identifiers — use `crypto.randomUUID()` instead. `uuid()` is
+- Production identifiers. Use `crypto.randomUUID()` instead. `uuid()` is
   backed by a deterministic PRNG, not a CSPRNG.

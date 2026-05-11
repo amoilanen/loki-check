@@ -55,11 +55,11 @@ forAll.assert(
 
 ## What loki-check does *not* try to be
 
-- **An `Arbitrary` typeclass system** — TypeScript's structural typing makes
+- **An `Arbitrary` typeclass system**. TypeScript's structural typing makes
   implicits awkward, so each combinator is named explicitly.
-- **A test framework** — `forAll` / `forAll.assert` are designed to plug into
+- **A test framework**. `forAll` / `forAll.assert` are designed to plug into
   whichever runner you already use.
-- **A coverage / classify reporter** — out of scope for v0.x; revisit if needed.
+- **A coverage / classify reporter**. Out of scope for v0.x; revisit if needed.
 
-For everything else: the primitives, the composition story, the seeded
-shrinking — it should feel familiar.
+For everything else (the primitives, the composition story, the seeded
+shrinking) it should feel familiar.

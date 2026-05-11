@@ -1,7 +1,7 @@
 # Generating an object via its constructor
 
 `object(Class, g1, g2, ...)` lifts a class constructor into the `Generator`
-applicative — every child generator becomes one positional argument. Run with:
+applicative: every child generator becomes one positional argument. Run with:
 
 ```sh
 npx tsx examples/object.generation.ts

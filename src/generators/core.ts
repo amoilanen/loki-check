@@ -1,18 +1,33 @@
-import { Maybe, none } from '../maybe.js';
+import { Maybe, Some, none } from '../maybe.js';
 import { Lazy } from '../lazy.js';
 import { Generator } from '../generator.js';
 import { type Random, defaultRandom } from '../random/index.js';
 
 const pure = Generator.pure;
 
-const neverGenerator: Generator<any> = pure(null);
+class ConstantGenerator<T> extends Generator<T> {
+  private readonly wrapped: Maybe<T>;
+  constructor(private readonly _value: T) {
+    super();
+    this.wrapped = new Some(_value);
+  }
+  generate(_rng?: Random): Maybe<T> {
+    return this.wrapped;
+  }
+}
+
+const neverInstance: Generator<any> = new (class extends Generator<any> {
+  generate(_rng?: Random): Maybe<any> {
+    return none;
+  }
+})();
 
 /**
  * Generator that never yields a value. Useful as the identity for choice-like
  * combinators ({@link oneOf}, {@link frequency}). Aliased as `fail`.
  */
 export function never<T>(): Generator<T> {
-  return neverGenerator;
+  return neverInstance;
 }
 
 /**
@@ -20,6 +35,27 @@ export function never<T>(): Generator<T> {
  * style code.
  */
 export const fail = never;
+
+/**
+ * Always yields `value`, including when `value` is `null` or `undefined`.
+ *
+ * Unlike {@link Generator.pure}, which routes `null` / `undefined` to
+ * {@link none} (so they cannot be produced as values), `constant` wraps the
+ * argument unconditionally. Use it when you actually want to generate `null`
+ * (e.g. as one branch of a JSON-shaped value) or any other "absent" sentinel.
+ *
+ * @example
+ * ```ts
+ * import { Generators } from 'loki-check';
+ *
+ * Generators.constant(null).sample();      // null
+ * Generators.constant(undefined).sample(); // undefined
+ * Generators.constant(42).sample();        // 42
+ * ```
+ */
+export function constant<T>(value: T): Generator<T> {
+  return new ConstantGenerator(value);
+}
 
 /**
  * Yields one of `values` chosen uniformly at random. Equivalent to

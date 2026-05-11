@@ -13,7 +13,7 @@ npx tsx examples/variable.name.ts
 
 ## Notes
 
-- `.filter(p)` is the method form of `Generators.suchThat(g, p)` — both
+- `.filter(p)` is the method form of `Generators.suchThat(g, p)`. Both
   reroll the generator until the predicate holds (or yield `none` after the
   retry budget).
 - Keep filtering predicates **cheap and high-acceptance**. Filtering is a

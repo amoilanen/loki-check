@@ -12,7 +12,7 @@ npx tsx examples/phone.ts
 
 ## Notes
 
-- `concat(g1, g2, ...)` glues string generators together — handy for templated
+- `concat(g1, g2, ...)` glues string generators together. Handy for templated
   identifiers, formatted numbers, etc.
 - `pure(x)` injects a constant value (here, the literal separators).
 - `numericString` and `stringOf(numChar(), { ... })` both produce digit-only

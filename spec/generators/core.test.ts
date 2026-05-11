@@ -29,6 +29,37 @@ describe('core generators', () => {
     });
   });
 
+  describe('constant', () => {
+
+    it('should produce the value given as the argument', () => {
+      expect(Generators.constant(5).generate()).toEqual(new Some(5));
+      expect(Generators.constant('hello').generate()).toEqual(new Some('hello'));
+    });
+
+    it('should produce null when null is the argument', () => {
+      const m = Generators.constant(null).generate();
+      expect(m.isDefined).toBe(true);
+      expect(m.value).toBeNull();
+    });
+
+    it('should produce undefined when undefined is the argument', () => {
+      const m = Generators.constant(undefined).generate();
+      expect(m.isDefined).toBe(true);
+      expect(m.value).toBeUndefined();
+    });
+
+    it('sample() should return null when constant(null) is used', () => {
+      expect(Generators.constant(null).sample()).toBeNull();
+    });
+
+    it('should be reproducible across calls', () => {
+      const g = Generators.constant({ tag: 'x' as const });
+      expect(g.sample({ seed: 1 })).toEqual({ tag: 'x' });
+      expect(g.sample({ seed: 'k' })).toEqual({ tag: 'x' });
+      expect(g.sampleN(3, { seed: 'k' })).toEqual([{ tag: 'x' }, { tag: 'x' }, { tag: 'x' }]);
+    });
+  });
+
   describe('oneOfValues', () => {
 
     it('should generate one of the values', () => {
