@@ -5,7 +5,7 @@ import { Generator } from '../generator.js';
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-check';
+ * import { Generators } from 'loki-tscheck';
  *
  * Generators.pure(42).sample(); // 42
  * ```

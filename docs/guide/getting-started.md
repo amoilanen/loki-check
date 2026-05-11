@@ -1,6 +1,6 @@
 # Getting Started
 
-`loki-check` is a small (~ a few KB minzipped, zero runtime dependencies) library
+`loki-tscheck` is a small (~ a few KB minzipped, zero runtime dependencies) library
 for building **composable, seeded data generators** and using them to drive
 property-based tests.
 
@@ -13,10 +13,10 @@ value" matters.
 ## Install
 
 ```sh
-npm install --save-dev loki-check
+npm install --save-dev loki-tscheck
 ```
 
-`loki-check` ships dual ESM (`.mjs`) and CJS (`.cjs`) bundles plus first-class
+`loki-tscheck` ships dual ESM (`.mjs`) and CJS (`.cjs`) bundles plus first-class
 type declarations and works on Node.js 22 LTS or newer.
 
 ## Your first generator
@@ -25,7 +25,7 @@ Every built-in combinator lives on the `Generators` namespace. Pull in just the
 ones you need.
 
 ```ts
-import { Generators } from 'loki-check';
+import { Generators } from 'loki-tscheck';
 
 const integerInRange = Generators.integer({ min: 0, max: 100 });
 
@@ -35,11 +35,11 @@ integerInRange.sample({ seed: 42 }); // deterministic
 
 ## Building a generator for your own type
 
-The whole point of loki-check is that you build the generator you need by
+The whole point of loki-tscheck is that you build the generator you need by
 composing the ones you have. Three combinators do most of the work:
 
 ```ts
-import { Generators } from 'loki-check';
+import { Generators } from 'loki-tscheck';
 
 interface User {
   id: string;
@@ -118,7 +118,7 @@ Every entry point that produces randomness (`sample`, `sampleN`, `forAll`,
 forever. This is the cornerstone of debuggable property-based testing:
 
 ```ts
-import { forAll, Generators } from 'loki-check';
+import { forAll, Generators } from 'loki-tscheck';
 
 const r = forAll(Generators.integer(), n => n < 100);
 if (!r.ok) console.log('reproduce with seed:', r.seed);
@@ -134,11 +134,11 @@ forAll.assert(myGen, predicate, { seed: 'addition-commutativity' });
 ## Your first property-based test
 
 `forAll.assert` throws on failure, so it drops straight into Vitest / Mocha /
-Jest / `node:test`. loki-check does not own the test loop:
+Jest / `node:test`. loki-tscheck does not own the test loop:
 
 ```ts
 import { describe, it } from 'vitest';
-import { forAll, Generators } from 'loki-check';
+import { forAll, Generators } from 'loki-tscheck';
 
 describe('Array#reverse', () => {
   it('is its own inverse', () => {

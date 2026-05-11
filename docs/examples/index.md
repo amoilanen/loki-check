@@ -1,7 +1,7 @@
 # Examples
 
 Each example below is a runnable file in the
-[`examples/`](https://github.com/amoilanen/loki-check/tree/master/examples)
+[`examples/`](https://github.com/amoilanen/loki-tscheck/tree/master/examples)
 directory of the repo. They run as part of the test suite via
 `npm run test:examples`, so every snippet you copy from this page is
 guaranteed to execute end-to-end on every commit.

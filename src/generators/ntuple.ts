@@ -26,7 +26,7 @@ export function nTuple<T>(...generators: Array<Generator<T>>): Generator<[T]>
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-check';
+ * import { Generators } from 'loki-tscheck';
  *
  * const point = Generators.nTuple(Generators.integer(), Generators.integer());
  * point.sample({ seed: 1 }); // [number, number]
@@ -54,7 +54,7 @@ export const zip = nTuple;
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-check';
+ * import { Generators } from 'loki-tscheck';
  *
  * const sum = Generators.lift(
  *   (a: number, b: number) => a + b,

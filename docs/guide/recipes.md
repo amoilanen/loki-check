@@ -9,7 +9,7 @@ template to adapt to your own domain.
 ### Email address
 
 ```ts
-import { Generators, type Generator } from 'loki-check';
+import { Generators, type Generator } from 'loki-tscheck';
 
 const atom = Generators.stringOf(Generators.alphaNumChar(), { minLength: 1, maxLength: 8 });
 
@@ -275,7 +275,7 @@ const positiveGood = Generators.integer({ min: 1 });
 ### Reusing one seeded `rng` across many calls
 
 ```ts
-import { fromSeed, Generators } from 'loki-check';
+import { fromSeed, Generators } from 'loki-tscheck';
 
 const rng = fromSeed('fixtures');
 const fixtures = {

@@ -1,6 +1,6 @@
 # Property-based testing with `forAll` and `exists`
 
-`loki-check` ships two quantifier-style entry points designed to plug into any
+`loki-tscheck` ships two quantifier-style entry points designed to plug into any
 test runner: Vitest, Mocha, Jest, `node:test`, or anything else that
 understands "throw on failure".
 
@@ -15,7 +15,7 @@ Returns a structured `ForAllResult`. On failure it shrinks toward the simplest
 counter-example.
 
 ```ts
-import { forAll, Generators } from 'loki-check';
+import { forAll, Generators } from 'loki-tscheck';
 
 const r = forAll(Generators.integer({ min: -1000, max: 1000 }), n => n * 0 === 0);
 
@@ -47,7 +47,7 @@ runner's `it(...)` block:
 
 ```ts
 import { describe, it } from 'vitest';
-import { forAll, Generators } from 'loki-check';
+import { forAll, Generators } from 'loki-tscheck';
 
 describe('Math', () => {
   it('addition is commutative', () => {
@@ -75,7 +75,7 @@ forAll.assert(myGen, predicate, { seed: 1234567890 });
 forAll.assert(myGen, predicate, { seed: 'commutativity-2026-01' });  // strings work too
 ```
 
-This is the most useful workflow loki-check enables: a CI failure
+This is the most useful workflow loki-tscheck enables: a CI failure
 prints a seed, you paste it into the test, the failure reproduces locally
 *every* time. No flaky, ungrepable random failures.
 
@@ -119,7 +119,7 @@ The dual of `forAll`. Returns the first witness satisfying the predicate, or
 reports failure after exhausting the try budget.
 
 ```ts
-import { exists, Generators } from 'loki-check';
+import { exists, Generators } from 'loki-tscheck';
 
 const r = exists(Generators.integer({ min: 0, max: 1000 }), n => n > 950);
 
@@ -193,7 +193,7 @@ forAll.assert(myGen, expensivePredicate, { shrink: false });
 ### Reusing one seed across many properties
 
 ```ts
-import { fromSeed, forAll, Generators } from 'loki-check';
+import { fromSeed, forAll, Generators } from 'loki-tscheck';
 
 const rng = fromSeed('shared-stream');
 forAll.assert(g1, p1, { rng });

@@ -4,7 +4,7 @@ A property-based test that says "this property failed on `[42, -1733, 9081, ...]
 of length 1000" is not very helpful. Shrinking turns that into "this property
 failed on `[0]`", the *smallest* failing input the runner can find.
 
-`loki-check` ships default shrinkers for every built-in combinator, so you
+`loki-tscheck` ships default shrinkers for every built-in combinator, so you
 get this behaviour out of the box. This page covers the model, when to write
 your own shrinker, and how to do it.
 
@@ -69,7 +69,7 @@ You will reach for `withShrinker` when:
 value-generation logic is preserved.
 
 ```ts
-import { Generators, type Shrinker } from 'loki-check';
+import { Generators, type Shrinker } from 'loki-tscheck';
 
 class Money {
   constructor(readonly amount: number, readonly currency: string) {}

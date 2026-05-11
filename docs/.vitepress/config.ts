@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'loki-check',
+  title: 'loki-tscheck',
   description: 'Composable, seeded data generators for TypeScript / JavaScript',
-  base: '/loki-check/',
+  base: '/loki-tscheck/',
   cleanUrls: true,
   lastUpdated: true,
   ignoreDeadLinks: true,
@@ -12,7 +12,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Examples', link: '/examples/' },
       { text: 'API', link: '/api/' },
-      { text: 'GitHub', link: 'https://github.com/amoilanen/loki-check' },
+      { text: 'GitHub', link: 'https://github.com/amoilanen/loki-tscheck' },
     ],
     sidebar: {
       '/guide/': [
@@ -64,11 +64,11 @@ export default defineConfig({
       ],
       '/api/': [{ text: 'API Reference', link: '/api/' }],
     },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/amoilanen/loki-check' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/amoilanen/loki-tscheck' }],
     search: { provider: 'local' },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2020-present loki-check contributors',
+      copyright: 'Copyright © 2020-present loki-tscheck contributors',
     },
   },
 });

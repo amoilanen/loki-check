@@ -11,7 +11,7 @@ and the [built-in combinators](./combinators.md).
 A generator that returns a single fixed value:
 
 ```ts
-import { Generators } from 'loki-check';
+import { Generators } from 'loki-tscheck';
 
 const pi = Generators.pure(3.14159);
 pi.sample();   // 3.14159, always
@@ -82,7 +82,7 @@ When the components of your value are independent, reach for `record`,
 generator and combines the results.
 
 ```ts
-import { Generators } from 'loki-check';
+import { Generators } from 'loki-tscheck';
 
 // Plain object
 interface User { id: string; name: string; age: number; }
@@ -177,7 +177,7 @@ Self-referential generators (trees, JSON, ASTs, linked lists) need two things:
 `Generators.sized` / `Generators.resize` give you the second.
 
 ```ts
-import { Generators, type Generator } from 'loki-check';
+import { Generators, type Generator } from 'loki-tscheck';
 
 type Tree = { value: number; children: Tree[] };
 
@@ -226,7 +226,7 @@ import {
   none,
   type Random,
   defaultRandom,
-} from 'loki-check';
+} from 'loki-tscheck';
 
 class WeightedFlip extends Generator<boolean> {
   constructor(private readonly pTrue: number) { super(); }
@@ -303,7 +303,7 @@ Putting everything together. An email is `local @ domain`, where:
 - `domain` is a host plus a TLD from a known list.
 
 ```ts
-import { Generators, type Generator } from 'loki-check';
+import { Generators, type Generator } from 'loki-tscheck';
 
 const atom: Generator<string> = Generators.stringOf(
   Generators.alphaNumChar(),

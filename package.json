@@ -1,5 +1,5 @@
 {
-  "name": "loki-check",
+  "name": "loki-tscheck",
   "version": "0.1.0",
   "description": "Data generator library for TypeScript/JavaScript",
   "type": "module",
@@ -34,14 +34,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/amoilanen/loki-check.git"
+    "url": "git+ssh://git@github.com/amoilanen/loki-tscheck.git"
   },
   "author": "anton.al.ivanov@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/amoilanen/loki-check/issues"
+    "url": "https://github.com/amoilanen/loki-tscheck/issues"
   },
-  "homepage": "https://github.com/amoilanen/loki-check#readme",
+  "homepage": "https://github.com/amoilanen/loki-tscheck#readme",
   "devDependencies": {
     "@types/node": "^22.10.0",
     "eslint": "^9.17.0",
