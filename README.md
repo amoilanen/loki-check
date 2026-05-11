@@ -1,12 +1,15 @@
 # loki-check
 
-<p align="center">
-  <img src="./assets/logo.jpg" alt="loki-check — raven mascot, in the spirit of the Norse sagas" width="320" />
+<p>
+  <img src="./assets/logo.jpg" alt="loki-check — raven mascot, in the spirit of the Norse sagas" width="80" align="left" hspace="16" vspace="8" />
+  <strong>× ᛚᚢᚴᛁ ᚠᚱᚢᚦᚢᚾ ×</strong><br/>
+  <em>"Loki, the shape-shifter of the sagas, slips between forms to test everybody."</em>
 </p>
-<center>× ᛚᚢᚴᛁ ᚠᚱᚢᚦᚢᚾ ×</center>
-<br/>
 
-> _"Loki, the shape-shifter of the sagas, slips between forms to test everybody."_
+
+<br/>
+<br/>
+<br/>
 
 Composable, seeded data generators and property-based testing for TypeScript / JavaScript, in the spirit of ScalaCheck - and named for the Norse trickster of the Eddas. Like Loki of the sagas, the library shape-shifts your inputs, slipping unexpected values past your assumptions until your invariants hold under every guise.
 
