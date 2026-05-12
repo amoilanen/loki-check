@@ -1,12 +1,12 @@
 # Migrating from ScalaCheck
 
-`loki-tscheck` is heavily inspired by [ScalaCheck](https://github.com/typelevel/scalacheck).
+`check-loki` is heavily inspired by [ScalaCheck](https://github.com/typelevel/scalacheck).
 The shapes carry over almost 1:1, but the names and call conventions are
 adjusted to feel native to TypeScript / JavaScript.
 
 ## Terminology
 
-| ScalaCheck | loki-tscheck | Notes |
+| ScalaCheck | check-loki | Notes |
 | ---------- | ------ | ----- |
 | `Gen[T]` | `Generator<T>` | Parameterised type, identical role. |
 | `Gen.const(x)` | `Generators.pure(x)` | |
@@ -14,7 +14,7 @@ adjusted to feel native to TypeScript / JavaScript.
 | `Gen.oneOf(values)` | `Generators.oneOfValues(...values)` | Spread the values. |
 | `Gen.frequency((w, g), ...)` | `Generators.frequency([w, g], ...)` | Tuples become arrays. |
 | `Gen.choose(min, max)` | `Generators.choose(min, max)` | Inclusive range, integers. |
-| `Gen.listOf(g)` | `Generators.listOf(g, maxLength)` / `Generators.arrayOf(...)` | loki-tscheck requires a max length. |
+| `Gen.listOf(g)` | `Generators.listOf(g, maxLength)` / `Generators.arrayOf(...)` | check-loki requires a max length. |
 | `Gen.listOfN(n, g)` | `Generators.listOfN(g, n)` / `Generators.arrayOfLength(g, n)` | Argument order flipped. |
 | `Gen.nonEmptyListOf(g)` | `Generators.nonEmptyListOf(g, maxSize)` | |
 | `Gen.containerOf[Set, T](g)` | `Generators.setOf(g, opts)` | |
@@ -22,28 +22,28 @@ adjusted to feel native to TypeScript / JavaScript.
 | `Arbitrary.arbInt` | `Generators.integer()` | |
 | `Arbitrary.arbBool` | `Generators.boolean` | |
 | `Arbitrary.arbDate` | `Generators.date` | |
-| `Gen.alphaNumStr` | `Generators.alphaNumString(length)` | loki-tscheck takes an explicit length. |
+| `Gen.alphaNumStr` | `Generators.alphaNumString(length)` | check-loki takes an explicit length. |
 | `Gen.uuid` | `Generators.uuid()` | |
 | `g.suchThat(p)` | `g.filter(p)` or `Generators.suchThat(g, p)` | |
 | `g.flatMap(f)` | `g.flatMap(f)` | Same shape. |
 | `g.map(f)` | `g.map(f)` | Same shape. |
-| `forAll { x => prop }` | `forAll(g, x => prop)` | loki-tscheck is a function, not an implicit. |
+| `forAll { x => prop }` | `forAll(g, x => prop)` | check-loki is a function, not an implicit. |
 | `Prop.exists { x => ... }` | `exists(g, x => ...)` | |
 | `Test.Parameters.withMinSuccessfulTests(n)` | `forAll(g, p, { tries: n })` | |
 | `Gen.sized(s => g(s))` | `Generators.sized(s => g(s))` | |
-| `g.resize(n)` | `Generators.resize(n, g)` | loki-tscheck exposes it as a free function. |
+| `g.resize(n)` | `Generators.resize(n, g)` | check-loki exposes it as a free function. |
 | Shrinker (auto-derived) | Default shrinkers attached to built-ins; override with `g.withShrinker(...)` | |
 
 ## Calling conventions
 
 ScalaCheck makes heavy use of implicit parameters and Scala-isms (`Arbitrary`,
-`Cogen`, `Prop`). `loki-tscheck` is deliberately function-based:
+`Cogen`, `Prop`). `check-loki` is deliberately function-based:
 
 ```ts
 // ScalaCheck
 forAll { (xs: List[Int]) => xs.reverse.reverse == xs }
 
-// loki-tscheck
+// check-loki
 forAll.assert(
   Generators.arrayOf(Generators.integer(), 50),
   xs => {
@@ -53,7 +53,7 @@ forAll.assert(
 );
 ```
 
-## What loki-tscheck does *not* try to be
+## What check-loki does *not* try to be
 
 - **An `Arbitrary` typeclass system**. TypeScript's structural typing makes
   implicits awkward, so each combinator is named explicitly.

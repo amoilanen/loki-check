@@ -36,7 +36,7 @@ export function object<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(objectConstru
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-tscheck';
+ * import { Generators } from 'check-loki';
  *
  * class Point { constructor(public x: number, public y: number) {} }
  * const points = Generators.object(Point, Generators.integer(), Generators.integer());
@@ -54,7 +54,7 @@ export function object<R>(objectConstructor: new (...args: any[]) => R, ...field
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-tscheck';
+ * import { Generators } from 'check-loki';
  *
  * const sum = Generators.objectGenerator(
  *   (a: number, b: number) => a + b,
@@ -88,7 +88,7 @@ export function objectGenerator<R>(objectFromArgs: (...args: any[]) => R, ...fie
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-tscheck';
+ * import { Generators } from 'check-loki';
  *
  * const point = Generators.record({
  *   x: Generators.integer({ min: 0, max: 9 }),

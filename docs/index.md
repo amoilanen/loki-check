@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: loki-tscheck
+  name: check-loki
   text: Composable, seeded data generators
   tagline: Property-based testing for TypeScript / JavaScript, in the spirit of ScalaCheck. A generator is a value, composition is just function calls.
   actions:
@@ -17,7 +17,7 @@ hero:
       link: /api/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/amoilanen/loki-tscheck
+      link: https://github.com/amoilanen/check-loki
 
 features:
   - title: Every generator is a monad
@@ -37,7 +37,7 @@ features:
 ## Five-line hello world
 
 ```ts
-import { Generators } from 'loki-tscheck';
+import { Generators } from 'check-loki';
 
 const point = Generators.record({
   x: Generators.integer({ min: 0, max: 100 }),
@@ -53,10 +53,10 @@ seed for reproducibility. Browse the [Guide](/guide/getting-started) for the
 longer story, the [Examples](/examples/) for runnable snippets, or jump straight
 to the [API reference](/api/).
 
-## What makes loki-tscheck different
+## What makes check-loki different
 
 A generator library is only as good as how easy it is to build a new generator
-for your own data. loki-tscheck sticks to three commitments:
+for your own data. check-loki sticks to three commitments:
 
 ### 1. Composition is the API
 
@@ -65,7 +65,7 @@ hierarchy to remember. The same three primitives that make `Promise` and
 `Array` familiar give you everything you need:
 
 ```ts
-import { Generators, type Generator } from 'loki-tscheck';
+import { Generators, type Generator } from 'check-loki';
 
 // pure :: T -> Generator<T>
 const always42: Generator<number> = Generators.pure(42);
@@ -104,7 +104,7 @@ classes, no `unwrap()` step.
 ### 3. The seed is a first-class debugging tool
 
 ```ts
-import { forAll, Generators } from 'loki-tscheck';
+import { forAll, Generators } from 'check-loki';
 
 const r = forAll(
   Generators.arrayOf(Generators.integer(), 50),

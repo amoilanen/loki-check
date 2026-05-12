@@ -1,7 +1,7 @@
-# loki-tscheck
+# check-loki
 
 <p>
-  <img src="./assets/logo.jpg" alt="loki-tscheck — raven mascot, in the spirit of the Norse sagas" width="80" align="left" hspace="16" vspace="8" />
+  <img src="./assets/logo.jpg" alt="check-loki — raven mascot, in the spirit of the Norse sagas" width="80" align="left" hspace="16" vspace="8" />
   <strong>× ᛚᚢᚴᛁ ᚠᚱᚢᚦᚢᚾ ×</strong><br/>
   <em>"Loki, the shape-shifter of the sagas, slips between forms to test everybody."</em>
 </p>
@@ -14,14 +14,14 @@
 Composable, seeded data generators and property-based testing for TypeScript / JavaScript, in the spirit of [ScalaCheck](https://github.com/typelevel/scalacheck) and named for the Norse trickster of the Eddas. Like Loki of the sagas, the library shape-shifts your inputs, slipping unexpected values past your assumptions until your invariants hold under every guise.
 
 ```sh
-npm install --save-dev loki-tscheck
+npm install --save-dev check-loki
 ```
 
-> **Full guide and API reference:** **<https://amoilanen.github.io/loki-tscheck/>**
+> **Full guide and API reference:** **<https://amoilanen.github.io/check-loki/>**
 
-## Why loki-tscheck?
+## Why check-loki?
 
-A generator library is only as good as how easy it is to build a generator for your own data. loki-tscheck is built around three ideas:
+A generator library is only as good as how easy it is to build a generator for your own data. check-loki is built around three ideas:
 
 1. **Every generator is a monad.** `pure`, `map` and `flatMap` are methods on every `Generator<T>`. If you can write a function, you can compose a generator. No inheritance, no schema files, no decorators, no builder DSL.
 2. **Composition is applicative.** `record`, `object`, `nTuple` and `lift` assemble generators for product types in one line.
@@ -29,9 +29,9 @@ A generator library is only as good as how easy it is to build a generator for y
 
 ### Functional heritage
 
-loki-tscheck follows the design of [ScalaCheck](https://github.com/typelevel/scalacheck) and the lineage that goes back to [QuickCheck](https://hackage.haskell.org/package/QuickCheck): generators are first-class values that compose algebraically. The TypeScript surface keeps the substance and trades the syntax for what reads naturally in JS:
+check-loki follows the design of [ScalaCheck](https://github.com/typelevel/scalacheck) and the lineage that goes back to [QuickCheck](https://hackage.haskell.org/package/QuickCheck): generators are first-class values that compose algebraically. The TypeScript surface keeps the substance and trades the syntax for what reads naturally in JS:
 
-| QuickCheck / ScalaCheck idea | loki-tscheck rendering |
+| QuickCheck / ScalaCheck idea | check-loki rendering |
 | ---------------------------- | -------------------- |
 | `Gen[T]` as a Functor / Monad | `Generator<T>` with `map`, `flatMap`, `pure` |
 | Applicative product building | `record({ ... })`, `object(Class, ...)`, `nTuple(...)`, `lift(fn, ...)` |
@@ -53,7 +53,7 @@ loki-tscheck follows the design of [ScalaCheck](https://github.com/typelevel/sca
 ## Hello world
 
 ```ts
-import { Generators } from 'loki-tscheck';
+import { Generators } from 'check-loki';
 
 const point = Generators.record({
   x: Generators.integer({ min: 0, max: 100 }),
@@ -71,7 +71,7 @@ Most generators are built by gluing smaller ones together. Three short examples,
 **Applicative product**: every field is drawn independently.
 
 ```ts
-import { Generators } from 'loki-tscheck';
+import { Generators } from 'check-loki';
 
 const address = Generators.record({
   street: Generators.lift(
@@ -94,7 +94,7 @@ const variableLengthArray = Generators.integer({ min: 1, max: 5 })
 **Recursive shape**: JSON-style values with bounded depth.
 
 ```ts
-import { Generators, type Generator } from 'loki-tscheck';
+import { Generators, type Generator } from 'check-loki';
 
 type Json = null | boolean | number | string | Json[];
 
@@ -120,7 +120,7 @@ const json: Generator<Json> = Generators.recursive<Json>(self =>
 
 ```ts
 import { describe, it } from 'vitest';
-import { forAll, Generators } from 'loki-tscheck';
+import { forAll, Generators } from 'check-loki';
 
 describe('Math', () => {
   it('addition is commutative', () => {
@@ -136,17 +136,17 @@ When the property fails, the thrown error embeds the seed (so you can re-run the
 
 ## Documentation
 
-The full guide lives at **<https://amoilanen.github.io/loki-tscheck/>**. Highlights:
+The full guide lives at **<https://amoilanen.github.io/check-loki/>**. Highlights:
 
-- [**Getting Started**](https://amoilanen.github.io/loki-tscheck/guide/getting-started): install, sample, seed.
-- [**Concepts**](https://amoilanen.github.io/loki-tscheck/guide/concepts): `Generator<T>`, `Maybe<T>`, monadic composition, reproducibility, shrinking.
-- [**Custom generators**](https://amoilanen.github.io/loki-tscheck/guide/custom-generators): building any generator from `pure`, `map`, `flatMap` and friends.
-- [**Combinators reference**](https://amoilanen.github.io/loki-tscheck/guide/combinators): the full toolbox.
-- [**Quantifiers**](https://amoilanen.github.io/loki-tscheck/guide/quantifiers): `forAll`, `forAll.assert`, `exists`.
-- [**Shrinking**](https://amoilanen.github.io/loki-tscheck/guide/shrinking): how counter-examples get minimised, how to write your own shrinker.
-- [**Recipes**](https://amoilanen.github.io/loki-tscheck/guide/recipes): common patterns - emails, UUIDs, recursive trees, model-based testing.
-- [**Migration from ScalaCheck**](https://amoilanen.github.io/loki-tscheck/guide/migration-from-scalacheck): terminology cheat sheet.
-- [**API reference**](https://amoilanen.github.io/loki-tscheck/api/): every public symbol.
+- [**Getting Started**](https://amoilanen.github.io/check-loki/guide/getting-started): install, sample, seed.
+- [**Concepts**](https://amoilanen.github.io/check-loki/guide/concepts): `Generator<T>`, `Maybe<T>`, monadic composition, reproducibility, shrinking.
+- [**Custom generators**](https://amoilanen.github.io/check-loki/guide/custom-generators): building any generator from `pure`, `map`, `flatMap` and friends.
+- [**Combinators reference**](https://amoilanen.github.io/check-loki/guide/combinators): the full toolbox.
+- [**Quantifiers**](https://amoilanen.github.io/check-loki/guide/quantifiers): `forAll`, `forAll.assert`, `exists`.
+- [**Shrinking**](https://amoilanen.github.io/check-loki/guide/shrinking): how counter-examples get minimised, how to write your own shrinker.
+- [**Recipes**](https://amoilanen.github.io/check-loki/guide/recipes): common patterns - emails, UUIDs, recursive trees, model-based testing.
+- [**Migration from ScalaCheck**](https://amoilanen.github.io/check-loki/guide/migration-from-scalacheck): terminology cheat sheet.
+- [**API reference**](https://amoilanen.github.io/check-loki/api/): every public symbol.
 
 ## Examples
 

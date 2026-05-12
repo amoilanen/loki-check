@@ -1,6 +1,6 @@
 # Concepts
 
-The whole API surface of `loki-tscheck` is built on a handful of ideas. Once you
+The whole API surface of `check-loki` is built on a handful of ideas. Once you
 have them in your head, every combinator in the library reads as a thin
 convenience over the same machinery.
 
@@ -10,7 +10,7 @@ A `Generator<T>` describes **how** to produce values of type `T`. It does not
 hold any values until you ask for one.
 
 ```ts
-import { Generators, type Generator } from 'loki-tscheck';
+import { Generators, type Generator } from 'check-loki';
 
 const g: Generator<number> = Generators.integer({ min: 0, max: 9 });
 
@@ -61,7 +61,7 @@ combinator), use `generate` directly.
 The two primary methods on every generator:
 
 ```ts
-import { Generators } from 'loki-tscheck';
+import { Generators } from 'check-loki';
 
 // map : Generator<T> -> (T -> U) -> Generator<U>
 const evenInts = Generators.integer({ min: 0, max: 100 }).map(n => n * 2);
@@ -170,7 +170,7 @@ both produce the same first value. If you want a single continuous stream
 across many calls, share the `rng`:
 
 ```ts
-import { fromSeed, Generators } from 'loki-tscheck';
+import { fromSeed, Generators } from 'check-loki';
 
 const rng = fromSeed(42);
 const a = Generators.integer().sample({ rng });
@@ -206,7 +206,7 @@ The default size is `100`. Use `Generators.sized(s => ...)` to read it, or
 Size is the natural way to control recursion depth:
 
 ```ts
-import { Generators, type Generator } from 'loki-tscheck';
+import { Generators, type Generator } from 'check-loki';
 
 type Tree = { value: number; children: Tree[] };
 
@@ -234,7 +234,7 @@ and gives you visibly different shapes for different starting sizes.
 ## Recursion safely
 
 Self-referential generators are tricky in any eager-evaluation language: at
-construction time the recursive call has not been built yet. `loki-tscheck`
+construction time the recursive call has not been built yet. `check-loki`
 solves this with `recursive(block)` plus a `Lazy<T>` thunk:
 
 ```ts

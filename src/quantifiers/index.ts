@@ -187,7 +187,7 @@ function assertForAll<T>(
  *
  * @example
  * ```ts
- * import { forAll, Generators } from 'loki-tscheck';
+ * import { forAll, Generators } from 'check-loki';
  *
  * const r = forAll(Generators.integer(), n => Number.isInteger(n));
  * if (!r.ok) console.error('Counter-example:', r.counterExample, 'seed:', r.seed);

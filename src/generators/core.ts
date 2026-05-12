@@ -46,7 +46,7 @@ export const fail = never;
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-tscheck';
+ * import { Generators } from 'check-loki';
  *
  * Generators.constant(null).sample();      // null
  * Generators.constant(undefined).sample(); // undefined
@@ -86,7 +86,7 @@ export function sequenceOfValues<T>(...values: Array<T>): Generator<T> {
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-tscheck';
+ * import { Generators } from 'check-loki';
  *
  * const colour = Generators.oneOf(
  *   Generators.pure('red'),
@@ -164,7 +164,7 @@ function randomIndexWithProbabilityDistribution(probabilities: Array<number>, ra
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-tscheck';
+ * import { Generators } from 'check-loki';
  *
  * // 80% positive integers, 20% negative.
  * const skewed = Generators.frequency(
@@ -201,7 +201,7 @@ export function frequency<T>(...generatorFrequences: Array<[number, Generator<T>
  *
  * @example
  * ```ts
- * import { Generators } from 'loki-tscheck';
+ * import { Generators } from 'check-loki';
  *
  * type Tree = { value: number; children: Tree[] };
  * const tree = Generators.recursive<Tree>(self =>

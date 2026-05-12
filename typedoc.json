@@ -24,7 +24,7 @@
       "Date": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
       "DateConstructor.parse": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"
     },
-    "loki-tscheck": {
+    "check-loki": {
       "Lazy": "#",
       "DEFAULT_SIZE": "#",
       "sized": "#",
