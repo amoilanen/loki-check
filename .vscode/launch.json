@@ -4,19 +4,67 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Mocha All",
-      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "name": "Vitest: Current File",
+      "autoAttachChildProcesses": true,
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
       "args": [
-        "-r",
-        "ts-node/register",
-        "--timeout",
-        "999999",
-        "--colors",
-        "${workspaceFolder}/spec/**/*.spec.ts",
+        "run",
+        "--no-file-parallelism",
+        "${relativeFile}"
       ],
+      "smartStep": true,
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "protocol": "inspector"
+      "internalConsoleOptions": "neverOpen"
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Vitest: Pick File",
+      "autoAttachChildProcesses": true,
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      "args": [
+        "run",
+        "--no-file-parallelism",
+        "${input:testFile}"
+      ],
+      "smartStep": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Vitest: All Tests",
+      "autoAttachChildProcesses": true,
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      "args": ["run"],
+      "smartStep": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "tsx: Current File",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--import", "tsx"],
+      "program": "${file}",
+      "cwd": "${workspaceFolder}",
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "smartStep": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "testFile",
+      "type": "promptString",
+      "description": "Path to test file (relative to workspace), e.g. spec/generators/core.test.ts",
+      "default": "spec/generators/core.test.ts"
+    }
   ]
 }
